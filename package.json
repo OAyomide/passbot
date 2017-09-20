@@ -1,0 +1,29 @@
+{
+  "name": "bobbajo",
+  "version": "0.0.1",
+  "description": "A fun starwars bot",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "botpress": "1.x",
+    "botpress-analytics": "^2.1.0",
+    "botpress-api.ai": "^2.1.3",
+    "botpress-hitl": "^1.0.10",
+    "botpress-messenger": "^2.2.9",
+    "botpress-scheduler": "^2.0.9",
+    "botpress-web": "1.x",
+    "clarifai": "^2.3.2",
+    "cryptojs": "^2.5.3",
+    "mongoose": "^4.11.10",
+    "multer": "^1.3.0",
+    "password-generator": "^2.1.0",
+    "recastai": "^3.4.1",
+    "request": "^2.81.0"
+  },
+  "scripts": {
+    "start": "botpress start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Onigbinde Ayomide",
+  "license": "Botpress Proprietary License"
+}

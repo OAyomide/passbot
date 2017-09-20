@@ -1,0 +1,24 @@
+welcome: # this is the #welcome bloc referenced in index.js
+  - typing: true
+    text: # Picks one randomly
+      - Hey there! Lets get you some passwords, shall we?
+      - Hello {{user.first_name}}. I am here for your password issues. Click below
+      - Good day :) I am sure you have password issues. Click below
+goodbye:
+  - text: You are leaving because of reason {{reason}}
+    typing: true
+  - Hope to see you back again soon! # if no other properties, you can just send a strings
+
+quickReply:
+  - wait: 1s
+  - text: Perform an action
+    quick_replies:
+      - <.B1> Generate password
+      - <.B3> Strong password
+      - <.B4> Custom password
+
+askStopConvo:
+  - template_type: button
+    text: I am just a bot! I discovered a previous search action that is unresolved. I am afraid you have to end that before we can proceed.
+    buttons:
+      - <STOP_CONVO> Stop prev. convo
