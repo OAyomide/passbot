@@ -259,7 +259,7 @@ bp.hear('QUICKREPLY.B4', (event, next) =>{
       var SPECIAL_CHAR_RE = /([\?\-])/g;
       var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
       if (minLength > maxLength) {
-        bp.messenger.sendText(event.user.id, "Urh Oh!! The maximum length of password is lesser than the minimum length of password. Please try again");
+        bp.messenger.sendText(event.user.id, "Urh Oh🚨🚨!! The maximum length of password is lesser than the minimum length of password. Please try again 👇🏾👇");
         convo.switchTo('default');
         event.reply('#quickReply')
            console.log("HOUSTON!!!!")

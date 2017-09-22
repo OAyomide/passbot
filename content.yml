@@ -1,9 +1,9 @@
 welcome: # this is the #welcome bloc referenced in index.js
   - typing: true
     text: # Picks one randomly
-      - Hey there! Lets get you some passwords, shall we?
-      - Hello {{user.first_name}}. I am here for your password issues. Click below
-      - Good day :) I am sure you have password issues. Click below
+      - Hey there ✋🏾! Lets get you some passwords, shall we?
+      - Hello {{user.first_name}}😀😀. I am here for your password issues. Click below 👇🏾👇
+      - Good day :) I am sure you have password issues. Click below 👇🏾👇to do something about it
 goodbye:
   - text: You are leaving because of reason {{reason}}
     typing: true
@@ -13,13 +13,13 @@ quickReply:
   - wait: 3s
   - text: Perform an action
     quick_replies:
-      - <.B1> Simple password
-      - <.B3> Strong password
-      - <.B4> Custom password
+      - <.B1> Simple password 🔐📛
+      - <.B3> Strong password 🔐✅
+      - <.B4> Custom password 🔐✅✅
 
 askStopConvo:
   - template_type: button
-    text: I am just a bot! I discovered a previous search action that is unresolved. I am afraid you have to end that before we can proceed.
+    text: I am just a bot 🤖😥! I discovered a previous search action that is unresolved. I am afraid you have to end that before we can proceed.
     buttons:
       - <STOP_CONVO> Stop prev. convo
 
@@ -38,22 +38,22 @@ sendResult:
 
 specialCharMinPass: 
   - typing: true 
-    text: I need special characters to give you a strong password. What minimum value do you want?
+    text: I need special characters to give you a strong password 🔒. What minimum value do you want?
 
 lowerCaseMinPass: 
-  - text: Sweet! How many minimum lowercase characters do you want your password to contain?
+  - text: Sweet 🍭🍭!  Minimum lowercase characters  for your password is?
 
 upperCaseMinPass: 
   - typing: true
     text: 
-      - Interesting! Please enter the minimum number of uppercase characters
+      - Interesting! Please enter the least number of uppercase characters
 numberPass: 
   - typing: true
     text: 
-      - Proper passwords should contain numbers. At least how many numbers should your password contain?
+      - Proper passwords should contain numbers 🔢. At least how many numbers should your password contain?
 
 wrongNumberInput: 
-  - text: That doesnt sound like a number. Please enter again
+  - text: Something is fishy 🐟🐟. That doesnt seem like a number ❌❌. You have to try again👇🏾👇
 
 generatedPassText:
   - typing: true
