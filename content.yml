@@ -13,7 +13,7 @@ quickReply:
   - wait: 1s
   - text: Perform an action
     quick_replies:
-      - <.B1> Generate password
+      - <.B1> Simple password
       - <.B3> Strong password
       - <.B4> Custom password
 
@@ -22,3 +22,43 @@ askStopConvo:
     text: I am just a bot! I discovered a previous search action that is unresolved. I am afraid you have to end that before we can proceed.
     buttons:
       - <STOP_CONVO> Stop prev. convo
+
+askPasswordLength:
+  - text: What is the minimum length of the password you want to generate?
+
+askPasswordMax:
+  - text: Saving the best for last, input the maximum possible length for your password
+
+sendResult:
+  - typing: true
+    text: 
+      - The length of lowercase is {{response}}
+  - text: The length of uppercase is {{responseTwo}}
+  - text: The length of special is {{responseThree}}
+
+specialCharMinPass: 
+  - typing: true 
+    text: I need special characters to give you a strong password. What minimum value do you want?
+
+lowerCaseMinPass: 
+  - text: Sweet! How many minimum lowercase characters do you want your password to contain?
+
+upperCaseMinPass: 
+  - typing: true
+    text: 
+      - Interesting! Please enter the minimum number of uppercase characters
+numberPass: 
+  - typing: true
+    text: 
+      - Proper passwords should contain numbers. At least how many numbers should your password contain?
+
+wrongNumberInput: 
+  - text: That doesnt sound like a number. Please enter again
+
+generatedPassText:
+  - typing: true
+    text: Here is your generated password
+
+# generatedPass:
+#   - typing: true
+#     text: {{customPass}}
