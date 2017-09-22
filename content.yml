@@ -10,7 +10,7 @@ goodbye:
   - Hope to see you back again soon! # if no other properties, you can just send a strings
 
 quickReply:
-  - wait: 2s
+  - wait: 3s
   - text: Perform an action
     quick_replies:
       - <.B1> Simple password
