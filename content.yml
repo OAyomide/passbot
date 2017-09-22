@@ -79,7 +79,7 @@ generatedPassText:
   - typing: true
     text: Here is your generated password
 passwordActionText:
-  - wait: 4s
+  - wait: 6s
   - typing: true
     text: You can now go ahead and copy your password 😃😃😃
 # generatedPass:
