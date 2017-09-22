@@ -13,7 +13,7 @@ quickReply:
   - wait: 3s
   - text: Perform an action
     quick_replies:
-      - <.B1> Simple password 🔐📛
+      - <.B1> Simple password 🔐⚠
       - <.B3> Strong password 🔐✅
       - <.B4> Custom password 🔐✅✅
 
@@ -24,10 +24,19 @@ askStopConvo:
       - <STOP_CONVO> Stop prev. convo
 
 askPasswordLength:
-  - text: What is the minimum length of the password you want to generate?
+  - typing: true
+    text:
+      - What is the minimum length of the password you want to generate?
+      - Tell me the smallest possible length of the password
+      - Your password should not be lesser than?
 
 askPasswordMax:
-  - text: Saving the best for last, input the maximum possible length for your password
+  - typing: true
+    text:
+      - Saving the best for last, input the maximum possible length for your password
+      - Now to the last part 🎉🎉, it shouldn't be longer than...?
+      - Finally 🎊💃🏾💃🏾, you have to tell me the highest value of length of your password.
+
 
 sendResult:
   - typing: true
@@ -38,27 +47,41 @@ sendResult:
 
 specialCharMinPass: 
   - typing: true 
-    text: I need special characters to give you a strong password 🔒🔒🔒. What minimum value do you want?
+    text:
+      - I need special characters to give you a strong password 🔒🔒🔒. What minimum value do you want?
+      - Special characters 🔣🔣 are required to give you the strong 🔒🔒🔒 password you desire. Enter the least possible value you want⤵⤵
+      - Special characters 🔣🔣 are important to give you a strong password 🔒🔒🔒, so enter the smallest possible value in your password🔑🔑🔑
 
-lowerCaseMinPass: 
-  - text: Sweet 🍭🍭!  Minimum lowercase characters  for your password is?
+lowerCaseMinPass:
+  - typing: true
+    text:
+      - Sweet 🍭🍭!  Minimum lowercase characters  for your password is?
+      - Alright!👌🏾👌🏾 The least number of lowercase characters is?
+      - And there should be at least how many lowercase characters? 
+
 
 upperCaseMinPass: 
   - typing: true
     text: 
-      - Interesting! Please enter the least number of uppercase characters
+      - Interesting!👉🏾👉🏾 Please enter the least number of uppercase characters
+      - I got that! Now tell me the possible smallest number of uppercase characters
+      - Next ⏭, what is the lowest number of uppercase characters you prefer?
 numberPass: 
   - typing: true
     text: 
       - Proper passwords should contain numbers 🔢🔢🔢. At least how many numbers should your password contain?
+      - Spot on!👏🏼👏🏼. Now, your password should contain at least how many numbers 🔢🔢🔢?
+      - Almost there 🚵🏾🚵🏾. Minimum count of numbers should be...?
 
 wrongNumberInput: 
   - text: Something is fishy 🐟🐟. That doesnt seem like a number ❌❌. You have to try again👇🏾👇
-
 generatedPassText:
   - typing: true
     text: Here is your generated password
-
+passwordActionText:
+  - wait: 3s
+  - typing: true
+    text: You can now go ahead and copy your password 😃😃😃
 # generatedPass:
 #   - typing: true
 #     text: {{customPass}}

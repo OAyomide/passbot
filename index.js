@@ -52,6 +52,7 @@ module.exports = function(bp) {
       console.log("DECRYPTED STUFF: ", decrypted);
   bp.messenger.sendText(event.user.id, `Here is a simple password I generated for you:`);
   bp.messenger.sendText(event.user.id, generatePassword)
+  event.reply('#passwordActionText');
   event.reply('#quickReply');
   } catch (e) {
       console.log("THE ENCRYPTION KEY IS WRONG!!");
@@ -106,6 +107,7 @@ bp.hear('QUICKREPLY.B3', (event, next) => {
   console.log(customPassword());
   bp.messenger.sendText(event.user.id, `Your custom password is:`);
   bp.messenger.sendText(event.user.id, `${customPassword()}`);
+  event.reply('#passwordActionText');
   event.reply('#quickReply');
 });
 
@@ -276,6 +278,7 @@ bp.hear('QUICKREPLY.B4', (event, next) =>{
             console.log(`GEN PASS IS: ${genPass}`)
             convo.say('#generatedPassText');
             convo.say(txt(genPass))
+            convo.say('#passwordActionText')
             convo.say('#quickReply');
          //console.log(customPassword());
       } function isStrongEnough(password) {
