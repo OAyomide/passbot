@@ -38,7 +38,7 @@ sendResult:
 
 specialCharMinPass: 
   - typing: true 
-    text: I need special characters to give you a strong password 🔒. What minimum value do you want?
+    text: I need special characters to give you a strong password 🔒🔒🔒. What minimum value do you want?
 
 lowerCaseMinPass: 
   - text: Sweet 🍭🍭!  Minimum lowercase characters  for your password is?
@@ -50,7 +50,7 @@ upperCaseMinPass:
 numberPass: 
   - typing: true
     text: 
-      - Proper passwords should contain numbers 🔢. At least how many numbers should your password contain?
+      - Proper passwords should contain numbers 🔢🔢🔢. At least how many numbers should your password contain?
 
 wrongNumberInput: 
   - text: Something is fishy 🐟🐟. That doesnt seem like a number ❌❌. You have to try again👇🏾👇
