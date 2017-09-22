@@ -10,7 +10,7 @@ goodbye:
   - Hope to see you back again soon! # if no other properties, you can just send a strings
 
 quickReply:
-  - wait: 3s
+  - wait: 5s
   - text: Perform an action
     quick_replies:
       - <.B1> Simple password 🔐⚠
@@ -79,7 +79,7 @@ generatedPassText:
   - typing: true
     text: Here is your generated password
 passwordActionText:
-  - wait: 6s
+  - wait: 3s
   - typing: true
     text: You can now go ahead and copy your password 😃😃😃
 # generatedPass:
