@@ -13,7 +13,7 @@ module.exports = function(bp) {
   // GET_STARTED is the first message you get on Facebook Messenger
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
     event.reply('#welcome'); // See the file `content.yml` to see the block
-    event.reply('#quickReply');
+    event.reply('#quickReplyFast');
     console.log('==============================');
     console.log('=====================================');
     console.log('==================================');
@@ -42,7 +42,7 @@ module.exports = function(bp) {
    *       SAVE TO LOG FILE, FOR USER TO BE ABLE TO RETRIEVE
    */
 
-   bp.hear('QUICKREPLY.B1', (event, next) => {
+   bp.hear(/QUICKREPLY.B1|QUICKREPLYFAST.B1/, (event, next) => {
      const generatePassword = passwordGen(7, true);
      bp.messenger.sendText(generatePassword);
      try {
@@ -66,7 +66,7 @@ module.exports = function(bp) {
 //   const 
 // })
 
-bp.hear('QUICKREPLY.B3', (event, next) => {
+bp.hear(/QUICKREPLY.B3|QUICKREPLYFAST.B3/, (event, next) => {
   var generatePassword = require("password-generator");
   
   var maxLength = 18;
@@ -117,7 +117,7 @@ bp.hear('QUICKREPLY.B3', (event, next) => {
 /**
  * we nid a custom password
  */
-bp.hear('QUICKREPLY.B4', (event, next) =>{
+bp.hear(/QUICKREPLY.B4|QUICKREPLYFAST.B4/, (event, next) =>{
   if (bp.convo.find(event)) {
     return event.reply('#askStopConvo')
   }
