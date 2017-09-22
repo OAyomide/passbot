@@ -2,16 +2,15 @@
 # This is regular YAML syntax. See http://docs.ansible.com/ansible/YAMLSyntax.html
 # You can override these settings with ENV variables. They are commented below.
 
-# hostname: "" # MESSENGER_HOST
+hostname: "passbotinit.herokuapp.com" # MESSENGER_HOST
+applicationID: "157882711454308" # MESSENGER_APP_ID
+accessToken: "EAAWZCltAkbTEBAOmUn3hLgd8tjvZA2s3Setxa18W8C5FPZAk9VXh4qmt2XDA5iwXGTmKpxZBxSiR9kCDZAv0C9jaswabgvuwqKZBOKrwJZB4epvY9hdDOTmzKBWCbZAPdtvA5i2X4bnWIdpAF072cjeYTCbJgaKWaOsNSDK33oB2AgZDZD" # MESSENGER_ACCESS_TOKEN
+appSecret: "0ed6d846fe5bf9dabba1f8eac248fffe" # MESSENGER_APP_SECRET
 
-# applicationID: "" # MESSENGER_APP_ID
-# accessToken: "" # MESSENGER_ACCESS_TOKEN
-# appSecret: "" # MESSENGER_APP_SECRET
+verifyToken: "passbot_verify" # MESSENGER_VERIFY_TOKEN
 
-# verifyToken: "" # MESSENGER_VERIFY_TOKEN
-
-# displayGetStarted: true
-# greetingMessage: ""
+displayGetStarted: true
+greetingMessage: "Your personal password generating bot"
 
 # https://developers.facebook.com/docs/messenger-platform/messenger-profile/persistent-menu
 # persistentMenuItems: []
