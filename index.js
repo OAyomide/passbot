@@ -38,7 +38,7 @@ module.exports = function(bp) {
    * User clicks on Generate password. We want to generate
    * TODO: HASH PASSWORD
    *       VERIFY USER
-   *       ASK USER FOR PASSWORD PROPERTIES (REMEMBRABLE, LENGTH, ETC);
+   *     DONE===>  ASK USER FOR PASSWORD PROPERTIES (REMEMBRABLE, LENGTH, ETC);
    *       SAVE TO LOG FILE, FOR USER TO BE ABLE TO RETRIEVE
    */
 
@@ -52,6 +52,7 @@ module.exports = function(bp) {
       console.log("DECRYPTED STUFF: ", decrypted);
   bp.messenger.sendText(event.user.id, `Here is a simple password I generated for you:`);
   bp.messenger.sendText(event.user.id, generatePassword)
+  event.reply('#quickReply');
   } catch (e) {
       console.log("THE ENCRYPTION KEY IS WRONG!!");
       bp.messenger.sendText(event.user.id, generatePassword);
@@ -103,7 +104,8 @@ bp.hear('QUICKREPLY.B3', (event, next) => {
   }
   
   console.log(customPassword());
-  bp.messenger.sendText(event.user.id, `Your custom password is: ${customPassword()}`);
+  bp.messenger.sendText(event.user.id, `Your custom password is:`);
+  bp.messenger.sendText(event.user.id, `${customPassword()}`);
   event.reply('#quickReply');
 });
 
@@ -259,6 +261,7 @@ bp.hear('QUICKREPLY.B4', (event, next) =>{
       if (minLength > maxLength) {
         bp.messenger.sendText(event.user.id, "Urh Oh!! The maximum length of password is lesser than the minimum length of password. Please try again");
         convo.switchTo('default');
+        event.reply('#quickReply')
            console.log("HOUSTON!!!!")
       }else  {
          function customPassword() {
