@@ -10,6 +10,7 @@ goodbye:
   - Hope to see you back again soon! # if no other properties, you can just send a strings
 
 quickReply:
+  - typing: true
   - wait: 6s
   - text: Perform an action
     quick_replies:
