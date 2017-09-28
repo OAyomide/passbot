@@ -38,7 +38,7 @@ module.exports = function(bp) {
       // You can pass data to the UMM bloc!
       reason: 'unknown'
     })
-    event.reply('#imageSent', {
+    convo.say('#imageSent', {
       url: event.raw.url
     })
   });
