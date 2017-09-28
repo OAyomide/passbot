@@ -39,7 +39,7 @@ module.exports = function(bp) {
       reason: 'unknown'
     })
     const type = 'image'
-    const url = event.raw.url
+    const url = event.raw.payload.url
     bp.messenger.sendAttachment(event.user.id, type, url)
   });
   /**
