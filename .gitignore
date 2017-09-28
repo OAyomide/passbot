@@ -46,3 +46,6 @@ jspm_packages
 # *** Botpress specifics ***
 /data
 /modules_config
+scratch.js
+sample.js
+custompassword.js

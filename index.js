@@ -28,7 +28,17 @@ module.exports = function(bp) {
       reason: 'unknown'
     })
   });
-
+  bp.hear({
+    type: /multimedia|image/i,
+  }, (event, next) => {
+    console.log('====================')
+    console.log('====================')
+    console.log('Event stuffs is: ', event)
+    event.reply('#goodbye', {
+      // You can pass data to the UMM bloc!
+      reason: 'unknown'
+    })
+  });
   /**
    * User clicks on Generate password. We want to generate
    * TODO: HASH PASSWORD
