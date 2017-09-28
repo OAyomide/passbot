@@ -38,9 +38,9 @@ module.exports = function(bp) {
       // You can pass data to the UMM bloc!
       reason: 'unknown'
     })
-    convo.say('#imageSent', {
-      url: event.raw.url
-    })
+    const type = 'image'
+    const url = event.raw.url
+    bp.messenger.sendAttachment(event.user.id, type, url)
   });
   /**
    * User clicks on Generate password. We want to generate
