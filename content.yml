@@ -88,6 +88,3 @@ passwordActionText:
   - wait: 3s
   - typing: true
     text: You can now go ahead and copy your password 😃😃😃
-# generatedPass:
-#   - typing: true
-#     text: {{customPass}}

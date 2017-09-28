@@ -24,5 +24,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Onigbinde Ayomide",
-  "license": "Botpress Proprietary License"
+  "license": "Botpress Proprietary License",
+  "devDependencies": {
+    "nodemon": "^1.12.0"
+  }
 }
