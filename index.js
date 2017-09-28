@@ -38,6 +38,9 @@ module.exports = function(bp) {
       // You can pass data to the UMM bloc!
       reason: 'unknown'
     })
+    event.reply('#imageSent', {
+      url: event.raw.url
+    })
   });
   /**
    * User clicks on Generate password. We want to generate
