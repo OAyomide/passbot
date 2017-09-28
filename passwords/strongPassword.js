@@ -1,25 +1,25 @@
 module.exports = function strong(bp) {
     bp.hear(/QUICKREPLY.B3|QUICKREPLYFAST.B3/, (event, next) => {
-        var generatePassword = require("password-generator");
+        let generatePassword = require("password-generator");
         
-        var maxLength = 18;
-        var minLength = 12;
-        var uppercaseMinCount = 3;
-        var lowercaseMinCount = 3;
-        var numberMinCount = 2;
-        var specialMinCount = 2;
-        var UPPERCASE_RE = /([A-Z])/g;
-        var LOWERCASE_RE = /([a-z])/g;
-        var NUMBER_RE = /([\d])/g;
-        var SPECIAL_CHAR_RE = /([\?\-])/g;
-        var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
+        let maxLength = 18;
+        let minLength = 12;
+        let uppercaseMinCount = 3;
+        let lowercaseMinCount = 3;
+        let numberMinCount = 2;
+        let specialMinCount = 2;
+        let UPPERCASE_RE = /([A-Z])/g;
+        let LOWERCASE_RE = /([a-z])/g;
+        let NUMBER_RE = /([\d])/g;
+        let SPECIAL_CHAR_RE = /([\?\-])/g;
+        let NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
         
         function isStrongEnough(password) {
-         var uc = password.match(UPPERCASE_RE);
-         var lc = password.match(LOWERCASE_RE);
-         var n = password.match(NUMBER_RE);
-         var sc = password.match(SPECIAL_CHAR_RE);
-         var nr = password.match(NON_REPEATING_CHAR_RE);
+         let uc = password.match(UPPERCASE_RE);
+         let lc = password.match(LOWERCASE_RE);
+         let n = password.match(NUMBER_RE);
+         let sc = password.match(SPECIAL_CHAR_RE);
+         let nr = password.match(NON_REPEATING_CHAR_RE);
          return password.length >= minLength &&
            !nr &&
            uc && uc.length >= uppercaseMinCount &&
@@ -29,8 +29,8 @@ module.exports = function strong(bp) {
         }
         
         function customPassword() {
-         var password = "";
-         var randomLength = Math.floor(Math.random() * (maxLength - minLength)) + minLength;
+         let password = "";
+         let randomLength = Math.floor(Math.random() * (maxLength - minLength)) + minLength;
          while (!isStrongEnough(password)) {
            password = generatePassword(randomLength, false, /[\w\d\?\-]/);
          }
