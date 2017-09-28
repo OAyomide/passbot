@@ -1,3 +1,4 @@
+const passwordGen = require('password-generator');
 module.exports = function customPassword(bp){
     bp.hear(/QUICKREPLY.B4|QUICKREPLYFAST.B4/, (event, next) =>{
         if (bp.convo.find(event)) {

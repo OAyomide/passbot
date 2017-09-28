@@ -1,7 +1,6 @@
 const request = require('request'); 
 const fs = require('fs');
 const path = require('path');
-const passwordGen = require('password-generator');
 const recast = require('recastai');
 const bcrypt = require('bcrypt-nodejs');
 const inLoop = require('botpress-hitl');
