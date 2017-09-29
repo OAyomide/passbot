@@ -1,7 +1,8 @@
-bp.hear('QUICKREPLY.B4', (event, next)=>{
-    bp.hear('QUICKREPLY.B1', (event, next) => {
-        if (bp.convo.find(event)) {
-          return event.reply('#askStopConvo')
-        }
-})
-})
+app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg").then(
+  function(response) {
+    // do something with response
+  },
+  function(err) {
+    // there was an error
+  }
+);

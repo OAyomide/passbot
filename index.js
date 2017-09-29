@@ -8,7 +8,7 @@ const crypto = require('cryptojs').Crypto;
 const customPass = require ('./passwords/customPassword');
 const strongPass = require('./passwords/strongPassword')
 // console.log(passwordGen(30, false));
-
+const passwordGen = require('password-generator');
 module.exports = function(bp) {
   // Listens for a first message (this is a Regex)
   // GET_STARTED is the first message you get on Facebook Messenger

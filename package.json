@@ -11,7 +11,7 @@
     "botpress-messenger": "^2.2.9",
     "botpress-scheduler": "^2.0.9",
     "botpress-web": "1.x",
-    "clarifai": "^2.3.2",
+    "clarifai": "^2.4.0",
     "cryptojs": "^2.5.3",
     "mongoose": "^4.11.10",
     "multer": "^1.3.0",
