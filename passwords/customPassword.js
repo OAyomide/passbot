@@ -153,7 +153,7 @@ module.exports = function customPassword(bp){
                       return password;
                      }
                     
-                      let genPass = customPassword()
+                      var genPass = customPassword()
                       console.log(`GEN PASS IS: ${genPass}`)
                       convo.say('#generatedPassText');
                       convo.say(txt(genPass))
