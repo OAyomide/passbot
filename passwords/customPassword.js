@@ -114,62 +114,75 @@ module.exports = function customPassword(bp){
       
       
           convo.on('done', ()=>{
-            const txt = txt => bp.messenger.createText(event.user.id, txt)      
-            var lowerMin = convo.get('lowercaseMin');
-            var upperMin = convo.get('uppercaseMin');
-            var specialCharMin = convo.get('special');
-            var miniLength = convo.get('minLength')
-            var numMin = convo.get('numbersMinCount');
-            var maxiLength = convo.get('maxLength')
-            var maxLength = parseInt(maxiLength,10);
-            var minLength = parseInt(miniLength,10);
-            var uppercaseMinCount = parseInt(upperMin,10);
-            var lowercaseMinCount = parseInt(lowerMin,10);
-            var numberMinCount = parseInt(numMin,10);;
-            var specialMinCount = parseInt(specialCharMin,10);
-            var UPPERCASE_RE = /([A-Z])/g;
-            var LOWERCASE_RE = /([a-z])/g;
-            var NUMBER_RE = /([\d])/g;
-            var SPECIAL_CHAR_RE = /([\?\-])/g;
-            var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
-            if (minLength > maxLength) {
-              bp.messenger.sendText(event.user.id, "Urh Oh🚨🚨!! The maximum length of password is lesser than the minimum length of password. Please try again 👇🏾👇");
-              convo.switchTo('default');
-              event.reply('#quickReply')
-                 console.log("HOUSTON!!!!")
-            }else  {
-               function customPassword() {
-                var password = "";
-                var randomLength = Math.floor(Math.random() * (maxLength - minLength)) + minLength;
-                while (!isStrongEnough(password)) {
-                  password = passwordGen(randomLength, false, /[\w\d\?\-]/);
+            const txt = txt => bp.messenger.createText(event.user.id, txt)
+            try {
+              var lowerMin = convo.get('lowercaseMin');
+              var upperMin = convo.get('uppercaseMin');
+              var specialCharMin = convo.get('special');
+              var miniLength = convo.get('minLength')
+              var numMin = convo.get('numbersMinCount');
+              var maxiLength = convo.get('maxLength')
+              var maxLength = parseInt(maxiLength,10);
+              var minLength = parseInt(miniLength,10);
+              var uppercaseMinCount = parseInt(upperMin,10);
+              var lowercaseMinCount = parseInt(lowerMin,10);
+              var numberMinCount = parseInt(numMin,10);;
+              var specialMinCount = parseInt(specialCharMin,10);
+              var UPPERCASE_RE = /([A-Z])/g;
+              var LOWERCASE_RE = /([a-z])/g;
+              var NUMBER_RE = /([\d])/g;
+              var SPECIAL_CHAR_RE = /([\?\-])/g;
+              var NON_REPEATING_CHAR_RE = /([\w\d\?\-])\1{2,}/g;
+                try {
+                  if (minLength > maxLength) {
+                    bp.messenger.sendText(event.user.id, "Urh Oh🚨🚨!! The maximum length of password is lesser than the minimum length of password. Please try again 👇🏾👇");
+                    convo.switchTo('default');
+                    event.reply('#quickReply')
+                       console.log("HOUSTON!!!!")
+                  }
+                  function customPassword() {
+                    var password = "";
+                    var randomLength = Math.floor(Math.random() * (maxLength - minLength)) + minLength;
+                    while (!isStrongEnough(password)) {
+                      password = passwordGen(randomLength, false, /[\w\d\?\-]/);
+                    }
+                    return password;
+                   }
+                   
+                  
+                    let genPass = customPassword()
+                    console.log(`GEN PASS IS: ${genPass}`)
+                    convo.say('#generatedPassText');
+                    convo.say(txt(genPass))
+                    convo.say('#passwordActionText')
+                    convo.say('#quickReply');
+                   
+                    
+                  
+                    function isStrongEnough(password) {
+                      var uc = password.match(UPPERCASE_RE);
+                      var lc = password.match(LOWERCASE_RE);
+                      var n = password.match(NUMBER_RE);
+                      var sc = password.match(SPECIAL_CHAR_RE);
+                      var nr = password.match(NON_REPEATING_CHAR_RE);
+                      return password.length >= minLength &&
+                        !nr &&
+                        uc && uc.length >= uppercaseMinCount &&
+                        lc && lc.length >= lowercaseMinCount &&
+                        n && n.length >= numberMinCount &&
+                        sc && sc.length >= specialMinCount;
+                     } 
+                } catch (e) {
+                  bp.messenger.sendText(event.user.id, "It seems something is wrong. The maximum password length is too small to contain the specified password specifications.")
                 }
-                return password;
-               }
-               var genPass = customPassword()
+                   
+                 //console.log(customPassword());
                
-                  console.log(`GEN PASS IS: ${genPass}`)
-                  convo.say('#generatedPassText');
-                  convo.say(txt(genPass))
-                  convo.say('#passwordActionText')
-                  convo.say('#quickReply');
-               //console.log(customPassword());
-            } function isStrongEnough(password) {
-              var uc = password.match(UPPERCASE_RE);
-              var lc = password.match(LOWERCASE_RE);
-              var n = password.match(NUMBER_RE);
-              var sc = password.match(SPECIAL_CHAR_RE);
-              var nr = password.match(NON_REPEATING_CHAR_RE);
-              return password.length >= minLength &&
-                !nr &&
-                uc && uc.length >= uppercaseMinCount &&
-                lc && lc.length >= lowercaseMinCount &&
-                n && n.length >= numberMinCount &&
-                sc && sc.length >= specialMinCount;
-             }
+            } catch (e) {
+              bp.messenger.sendText(event.user.id, "It seems something is wrong. The maximum password length is too small to contain the specified password specifications.")
+            }      
+            
           })
         })
-        
-      
       })
 }
