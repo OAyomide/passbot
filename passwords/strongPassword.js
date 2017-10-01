@@ -65,10 +65,11 @@ module.exports = function strong(bp) {
         bp.messenger.sendText(event.user.id, `${customPassword()}`);
         event.reply('#passwordActionText');
         event.reply('#quickReply');
-        var passDir = passwordFile.path
         const passwordFile = fs.createWriteStream(`./passwords/${event.user.id}passwords.txt`,{
           flags: 'a'
       });
+        var passDir = passwordFile.path
+        
         var mySavedPass = new schema({
           username: `${event.user.first_name} ${event.user.last_name}`,
           userId: `${event.user.id}`,
