@@ -23,12 +23,12 @@ mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', fu
       console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
   }
 });
-// var passSchema = mongoose.Schema({
-//   username: {type: String, required: true},
-//   userId: {type: int, required:true}
-// });
+var passSchema = mongoose.Schema({
+  username: {type: String, required: true},
+  userId: {type: int, required:true}
+});
 
-// const schema = mongoose.model("firstTest", passSchema);
+const schema = mongoose.model("firstTest", passSchema);
 
 module.exports = function(bp) {
   // Listens for a first message (this is a Regex)
