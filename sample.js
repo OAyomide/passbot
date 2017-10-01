@@ -13,7 +13,7 @@ console.log("PASSWORD IS: ", pass);
     //const decrypted = crypto.AES.decrypt(encrypted,"anna");   
    // console.log("ENCRYPTED STUFF: ", encrypted);
    // console.log("DECRYPTED STUFF: ", decrypted);
-mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
+mongoose.connect('mongodb://localhost:27017/passbot', function(err, res){
     if (err){
         console.log("Error connecting to mongodb");
         console.log("===============================");console.log("===============================");console.log("===============================");
@@ -28,7 +28,8 @@ var passSchema = mongoose.Schema({
     username: {type: String, required: true},
     generatedPassword: [{type: String, required: true}],
     ownKey: {type: String, required: true},
-    file: {type: String}
+    file: {type: String},
+    userId: {type: Number,}
 
 });
 

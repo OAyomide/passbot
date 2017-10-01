@@ -14,7 +14,7 @@ mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', fu
 });
 var passSchema = mongoose.Schema({
   username: {type: String, required: true},
-  userId: {type: Integer, required:true},
+  userId: {type:Number , required:true},
   file: {type: String}
 
 });
