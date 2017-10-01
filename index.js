@@ -23,7 +23,6 @@ mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', fu
       console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
   }
 });
-
 // var passSchema = mongoose.Schema({
 //   username: {type: String, required: true},
 //   userId: {type: int, required:true}
@@ -31,12 +30,7 @@ mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', fu
 
 // const schema = mongoose.model("firstTest", passSchema);
 
-
-
 module.exports = function(bp) {
-  bp.get('/test',(req,res)=>{
-    res.send('IT WORKS');
-  })
   // Listens for a first message (this is a Regex)
   // GET_STARTED is the first message you get on Facebook Messenger
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
