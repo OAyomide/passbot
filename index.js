@@ -7,11 +7,10 @@ const inLoop = require('botpress-hitl');
 const crypto = require('cryptojs').Crypto;
 const customPass = require ('./passwords/customPassword');
 const strongPass = require('./passwords/strongPassword');
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 //const moment = require('moment');
 // console.log(passwordGen(30, false));
 const passwordGen = require('password-generator');
-
 
 mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
   if (err){
