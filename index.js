@@ -11,9 +11,7 @@ const strongPass = require('./passwords/strongPassword');
 //const moment = require('moment');
 // console.log(passwordGen(30, false));
 const passwordGen = require('password-generator');
-bp.get('/test',(req,res)=>{
-  res.send('IT WORKS');
-})
+
 
 mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
   if (err){
@@ -37,6 +35,9 @@ mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', fu
 
 
 module.exports = function(bp) {
+  bp.get('/test',(req,res)=>{
+    res.send('IT WORKS');
+  })
   // Listens for a first message (this is a Regex)
   // GET_STARTED is the first message you get on Facebook Messenger
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
