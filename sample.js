@@ -7,14 +7,19 @@ const crypto = require('cryptojs').Crypto;
 const bcrypt = require('bcrypt-nodejs');
 const pass = passwordGen(30, false);
 const mongoose = require('mongoose');
+const moment = require('moment')
 console.log("PASSWORD IS: ", pass);
 //const encrypted = crypto.AES.encrypt(pass, "anna");
     //const decrypted = crypto.AES.decrypt(encrypted,"anna");   
    // console.log("ENCRYPTED STUFF: ", encrypted);
    // console.log("DECRYPTED STUFF: ", decrypted);
-mongoose.connect('mongodb://localhost:27017/passbot', function(err, res){
+mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
     if (err){
         console.log("Error connecting to mongodb");
+        console.log("===============================");console.log("===============================");console.log("===============================");
+        console.log(err.message);
+        console.log("===============================");
+        console.log("===============================");
     } else if (!err){
         console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
     }
@@ -22,7 +27,8 @@ mongoose.connect('mongodb://localhost:27017/passbot', function(err, res){
 var passSchema = mongoose.Schema({
     username: {type: String, required: true},
     generatedPassword: [{type: String, required: true}],
-    ownKey: {type: String, required: true}
+    ownKey: {type: String, required: true},
+    file: {type: String}
 
 });
 
@@ -77,32 +83,87 @@ function customPassword() {
 const passKK = customPassword();
 
 console.log(customPassword());
-
-schema.findOne({
-    username: "ayomide"
-}, (err, resp) => {
-    if (err) {
-        console.error("WE HAVE A PROBLEM!!");
-    } else if (!err) {
-        console.log(`I GOT IT!:::: ${resp}`);
-    }
-    const passwordFile = fs.createWriteStream('./passwords/passwords.txt', "UTF-8");
-    let written = passwordFile.write(passKK, (err, res) => {
-        if (err) {
-            console.log("ERROR WRITING TO THE FILE.")
-        } else if (!err) {
-            console.log("Written and saved");
-        }
-    });
-    passwordFile.end()
+const passwordFile = fs.createWriteStream(`./passwords/passwords${02}.txt`,{
+    flags: 'a'
 });
+var passDir = passwordFile.path
+// schema.findOne({
+//     username: "ayomide"
+// }, (err, resp) => {
+//     if (err) {
+//         console.error("WE HAVE A PROBLEM!!");
+//     } else if (!) {
+//         console.log(`I GOT IT!:::: ${resp}`);
+//     }
+    
+//     // let time = moment().format('MMMM Do YYYY, h:mm:ss a')
+//     // passwordFile.write(`\nTime: ${time}`)
+//     // let breakIt = passwordFile.write('\n====================\n')
+//     // let written = new Promise((resolve, reject) => {
+//     //     passwordFile.write(passKK+'\n', (err, res) => {
+//     //        resolve(res);
+//     //        reject(err);
+//     //     }
+//     // )
+//     // }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
+//     // passwordFile.end();
+//     fs.readFile(passDir, (err, data)=>{
+//         if (err) throw err
+//             console.log(`Written file is: ${data}`)
+//     })
+//     console.log(`Directory is: ${passDir}`)
+// });
 
 var mySavedPass = new schema({
         username: "ayomide",
         generatedPassword: passKK,
-        ownKey: "type" 
+        ownKey: "type",
+        file: passDir 
     });
+    new Promise((resolve,reject) => {
+        schema.findOne({
+            username: "eyomide"
+        }, (err,res) =>{
+            resolve(res)
+            reject(err)
+        })     
+    }).then((response) =>{
+        if (response) {
+            
+            let time = moment().format('MMMM Do YYYY, h:mm:ss a')
+            passwordFile.write(`\nTime: ${time}`)
+            let breakIt = passwordFile.write('\n====================\n')
+            let written = new Promise((resolve, reject) => {
+                passwordFile.write(passKK+'\n', (err, res) => {
+                   resolve(res);
+                   reject(err);
+                }
+            )
+            }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
+            passwordFile.end();
+            return console.log("USER EXISTS")
+        } else {
+            
+            let time = moment().format('MMMM Do YYYY, h:mm:ss a')
+            passwordFile.write(`\nTime: ${time}`)
+            let breakIt = passwordFile.write('\n====================\n')
+            let written = new Promise((resolve, reject) => {
+                passwordFile.write(customPassword()+'\n', (err, res) => {
+                   resolve(res);
+                   reject(err);
+                }
+            )
+            }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
+            passwordFile.end();
+            mySavedPass.save();
+            console.log("SAVING.....SAVED");
+        }
+        fs.readFile(passDir, (err, data)=>{
+            if (err) throw err
+                console.log(`Written file is: ${data}`)
+        })
+        console.log(`Directory is: ${passDir}`)
+    }).catch((err)=>console.log(err))
     
-    mySavedPass.save();
 
  

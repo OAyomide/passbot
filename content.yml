@@ -51,7 +51,7 @@ sendResult:
   - text: The length of uppercase is {{responseTwo}}
   - text: The length of special is {{responseThree}}
 
-specialCharMinPass: 
+specialCharMinPass:
   - typing: true 
     text:
       - I need special characters to give you a strong password 🔒🔒🔒. What minimum value do you want?
@@ -87,7 +87,7 @@ generatedPassText:
 passwordActionText:
   - wait: 3s
   - typing: true
-    text: You can now go ahead and copy your password 😃😃😃
+    text: You can now go ahead and copy your password 😃😃😃. Don't forget to delete after copying. Don't worry, I am going to keep you a copy
 
 # imageSent:
 #   - url: {{{url}}}
