@@ -36,11 +36,26 @@ module.exports = function(bp) {
     event.reply('#welcome'); // See the file `content.yml` to see the block
     event.reply('#quickReplyFast');
 
-    var mySavedPass = new schema({
-      username: `${event.user.first_name} ${event.user.last_name}`,
-      userId: `${event.user.id}`
-  });
-  mySavedPass.save();
+    new Promise((resolve,reject) => {
+            schema.findOne({
+              username: `${event.user.first_name} ${event.user.last_name}`
+            }, (err,res) =>{
+                resolve(res)
+                reject(err)
+            })     
+        }).then((response) =>{
+            if (response) {
+                return console.log("USER EXISTS")
+            } else {
+              var mySavedPass = new schema({
+                username: `${event.user.first_name} ${event.user.last_name}`,
+                userId: `${event.user.id}`
+            });
+                mySavedPass.save();
+                console.log("SAVING.....SAVED");
+            }
+          })
+    
   })
 
   // You can also pass a matcher object to better filter events
@@ -114,4 +129,4 @@ bp.hear('STOP_CONVO', (event, next) => {
   }
   event.reply('#quickReply')
 });
-}
+  }

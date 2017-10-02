@@ -19,7 +19,7 @@ var passSchema = mongoose.Schema({
 
 });
 
-const schema = mongoose.model("PssOne", passSchema);
+const schema = mongoose.model("UsersOne", passSchema);
 
 module.exports = function strong(bp) {
     bp.hear(/QUICKREPLY.B3|QUICKREPLYFAST.B3/, (event, next) => {
@@ -65,60 +65,60 @@ module.exports = function strong(bp) {
         bp.messenger.sendText(event.user.id, `${customPassword()}`);
         event.reply('#passwordActionText');
         event.reply('#quickReply');
-        const passwordFile = fs.createWriteStream(`./passwords/${event.user.id}passwords.txt`,{
-          flags: 'a'
-      });
-        var passDir = passwordFile.path
+    //     const passwordFile = fs.createWriteStream(`./passwords/${event.user.id}passwords.txt`,{
+    //       flags: 'a'
+    //   });
+    //     var passDir = passwordFile.path
         
-        var mySavedPass = new schema({
-          username: `${event.user.first_name} ${event.user.last_name}`,
-          userId: `${event.user.id}`,
-          file: passDir 
-      });
-      new Promise((resolve,reject) => {
-          schema.findOne({
-            username: `${event.user.first_name} ${event.user.last_name}`
-          }, (err,res) =>{
-              resolve(res)
-              reject(err)
-          })     
-      }).then((response) =>{
-          if (response) {
+    //     var mySavedPass = new schema({
+    //       username: `${event.user.first_name} ${event.user.last_name}`,
+    //       userId: `${event.user.id}`,
+    //       file: passDir 
+    //   });
+    //   new Promise((resolve,reject) => {
+    //       schema.findOne({
+    //         username: `${event.user.first_name} ${event.user.last_name}`
+    //       }, (err,res) =>{
+    //           resolve(res)
+    //           reject(err)
+    //       })     
+    //   }).then((response) =>{
+    //       if (response) {
               
-              let time = moment().format('MMMM Do YYYY, h:mm:ss a')
-              passwordFile.write(`\nTime: ${time}`)
-              let breakIt = passwordFile.write('\n====================\n')
-              let written = new Promise((resolve, reject) => {
-                  passwordFile.write(customPassword()+'\n', (err, res) => {
-                     resolve(res);
-                     reject(err);
-                  }
-              )
-              }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
-              passwordFile.end();
-              return console.log("USER EXISTS")
-          } else {
+    //           let time = moment().format('MMMM Do YYYY, h:mm:ss a')
+    //           passwordFile.write(`\nTime: ${time}`)
+    //           let breakIt = passwordFile.write('\n====================\n')
+    //           let written = new Promise((resolve, reject) => {
+    //               passwordFile.write(customPassword()+'\n', (err, res) => {
+    //                  resolve(res);
+    //                  reject(err);
+    //               }
+    //           )
+    //           }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
+    //           passwordFile.end();
+    //           return console.log("USER EXISTS")
+    //       } else {
               
-              let time = moment().format('MMMM Do YYYY, h:mm:ss a')
-              passwordFile.write(`\nTime: ${time}`)
-              let breakIt = passwordFile.write('\n====================\n')
-              let written = new Promise((resolve, reject) => {
-                  passwordFile.write(customPassword()+'\n', (err, res) => {
-                     resolve(res);
-                     reject(err);
-                  }
-              )
-              }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
-              passwordFile.end();
-              mySavedPass.save();
-              console.log("SAVING.....SAVED");
-          }
-          fs.readFile(passDir, (err, data)=>{
-              if (err) throw err
-                  console.log(`Written file is: ${data}`)
-          })
-          console.log(`Directory is: ${passDir}`)
-      }).catch((err)=>console.log(err))
+    //           let time = moment().format('MMMM Do YYYY, h:mm:ss a')
+    //           passwordFile.write(`\nTime: ${time}`)
+    //           let breakIt = passwordFile.write('\n====================\n')
+    //           let written = new Promise((resolve, reject) => {
+    //               passwordFile.write(customPassword()+'\n', (err, res) => {
+    //                  resolve(res);
+    //                  reject(err);
+    //               }
+    //           )
+    //           }).then((resp) => console.log("Written and Saved")).catch((error)=>console.log("Error writing")) 
+    //           passwordFile.end();
+    //           mySavedPass.save();
+    //           console.log("SAVING.....SAVED");
+    //       }
+    //       fs.readFile(passDir, (err, data)=>{
+    //           if (err) throw err
+    //               console.log(`Written file is: ${data}`)
+    //       })
+    //       console.log(`Directory is: ${passDir}`)
+    //   }).catch((err)=>console.log(err))
 
       });
 

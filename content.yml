@@ -87,7 +87,7 @@ generatedPassText:
 passwordActionText:
   - wait: 3s
   - typing: true
-    text: You can now go ahead and copy your password 😃😃😃. Don't forget to delete after copying. Don't worry, I am going to keep you a copy
+    text: You can now go ahead and copy your password 😃😃😃. Don't forget to delete after copying.
 
 # imageSent:
 #   - url: {{{url}}}

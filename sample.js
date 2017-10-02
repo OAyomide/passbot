@@ -33,7 +33,7 @@ var passSchema = mongoose.Schema({
 
 });
 
- const schema = mongoose.model("PssOne", passSchema);
+ const schema = mongoose.model("UsersOne", passSchema);
 
 // var mySavedPass = new schema({
 //     username: "ayomide",
