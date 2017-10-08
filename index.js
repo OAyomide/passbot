@@ -9,26 +9,25 @@ const crypto = require('cryptojs').Crypto;
 const customPass = require ('./passwords/customPassword');
 const strongPass = require('./passwords/strongPassword');
 const mongoose = require('mongoose');
-const test = require('./sample')
 const moment = require('moment');
 // console.log(passwordGen(30, false));
 const passwordGen = require('password-generator');
 
-// mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
-//   if (err){
-//       console.log("Error connecting to mongodb");
-//       console.log("===============================");console.log("===============================");console.log("===============================");
-//       console.log(err.message);
-//       console.log("===============================");
-//       console.log("===============================");
-//   } else if (!err){
-//       console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
-//   }
-// });
-// var passSchema = mongoose.Schema({
-//   username: {type: String, required: true},
-//   userId: {type: Number, required:true}
-// });
+mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
+  if (err){
+      console.log("Error connecting to mongodb");
+      console.log("===============================");console.log("===============================");console.log("===============================");
+      console.log(err.message);
+      console.log("===============================");
+      console.log("===============================");
+  } else if (!err){
+      console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
+  }
+});
+var passSchema = mongoose.Schema({
+  username: {type: String, required: true},
+  userId: {type: Number, required:true}
+});
 
 // const schema = mongoose.model("firstTest", passSchema);
 module.exports = function(bp) {
@@ -37,26 +36,25 @@ module.exports = function(bp) {
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
     event.reply('#welcome'); // See the file `content.yml` to see the block
     event.reply('#quickReplyFast');
-test()
-    // new Promise((resolve,reject) => {
-    //         schema.findOne({
-    //           username: `${event.user.first_name} ${event.user.last_name}`
-    //         }, (err,res) =>{
-    //             resolve(res)
-    //             reject(err)
-    //         })     
-    //     }).then((response) =>{
-    //         if (response) {
-    //             return console.log("USER EXISTS")
-    //         } else {
-    //           var mySavedPass = new schema({
-    //             username: `${event.user.first_name} ${event.user.last_name}`,
-    //             userId: `${event.user.id}`
-    //         });
-    //             mySavedPass.save();
-    //             console.log("SAVING.....SAVED");
-    //         }
-    //       })
+    new Promise((resolve,reject) => {
+            schema.findOne({
+              username: `${event.user.first_name} ${event.user.last_name}`
+            }, (err,res) =>{
+                resolve(res)
+                reject(err)
+            })     
+        }).then((response) =>{
+            if (response) {
+                return console.log("USER EXISTS")
+            } else {
+              var mySavedPass = new schema({
+                username: `${event.user.first_name} ${event.user.last_name}`,
+                userId: `${event.user.id}`
+            });
+                mySavedPass.save();
+                console.log("SAVING.....SAVED");
+            }
+          })
     
   })
 
