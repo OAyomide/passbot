@@ -142,7 +142,7 @@ module.exports = function customPassword(bp){
                        console.log("HOUSTON!!!!")
                   }
                   if (total > maxLength) {
-                    convo.say("It seems something is wrong. The maximum password length is too small to contain the specified password specifications.")
+                    convo.say("It seems something is wrong 🚨🚨. The maximum password length is too small to contain the specified password specifications.")
                     convo.say('#quickReply')
                   } else{
                     function customPassword() {

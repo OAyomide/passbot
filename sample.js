@@ -1,3 +1,4 @@
+module.exports= function(){
 const request = require('request');
 const passwordGen = require('password-generator');
 const recast = require('recastai');
@@ -8,6 +9,7 @@ const bcrypt = require('bcrypt-nodejs');
 const pass = passwordGen(30, false);
 const mongoose = require('mongoose');
 const moment = require('moment')
+const path = require('path')
 console.log("PASSWORD IS: ", pass);
 //const encrypted = crypto.AES.encrypt(pass, "anna");
     //const decrypted = crypto.AES.decrypt(encrypted,"anna");   
@@ -33,16 +35,15 @@ var passSchema = mongoose.Schema({
 
 });
 
- const schema = mongoose.model("UsersOne", passSchema);
+  const schema = mongoose.model("UsersTwo", passSchema);
 
-// var mySavedPass = new schema({
-//     username: "ayomide",
-//     generatedPassword: pass,
-//     ownKey: "type",
-//     encryptedPassword: encrypted
-// });
+var mySavedPass = new schema({
+    username: "ayomide",
+    generatedPassword: pass,
+    ownKey: "type",
+});
 
-// mySavedPass.save();
+mySavedPass.save();
 
 
 var generatePassword = require("password-generator");
@@ -84,7 +85,7 @@ function customPassword() {
 const passKK = customPassword();
 
 console.log(customPassword());
-const passwordFile = fs.createWriteStream(`./passwords/passwords${02}.txt`,{
+const passwordFile = fs.createWriteStream(path.join(`./passwords/passwords${03}.txt`),{
     flags: 'a'
 });
 var passDir = passwordFile.path
@@ -115,12 +116,12 @@ var passDir = passwordFile.path
 //     console.log(`Directory is: ${passDir}`)
 // });
 
-var mySavedPass = new schema({
-        username: "ayomide",
-        generatedPassword: passKK,
-        ownKey: "type",
-        file: passDir 
-    });
+// var mySavedPass = new schema({
+//         username: "ayomide",
+//         generatedPassword: passKK,
+//         ownKey: "type",
+//         file: passDir 
+//     });
     new Promise((resolve,reject) => {
         schema.findOne({
             username: "eyomide"
@@ -166,5 +167,5 @@ var mySavedPass = new schema({
         console.log(`Directory is: ${passDir}`)
     }).catch((err)=>console.log(err))
     
-
+}
  

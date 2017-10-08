@@ -9,6 +9,7 @@
     "botpress-analytics": "^2.1.0",
     "botpress-hitl": "^1.0.10",
     "botpress-messenger": "^2.2.9",
+    "botpress-platform-webchat": "^0.1.2",
     "botpress-scheduler": "^2.0.9",
     "botpress-web": "1.x",
     "clarifai": "^2.4.0",

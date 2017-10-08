@@ -1,5 +1,6 @@
 const request = require('request'); 
 const fs = require('fs');
+//import fs from 'fs'
 const path = require('path');
 const recast = require('recastai');
 const bcrypt = require('bcrypt-nodejs');
@@ -8,53 +9,54 @@ const crypto = require('cryptojs').Crypto;
 const customPass = require ('./passwords/customPassword');
 const strongPass = require('./passwords/strongPassword');
 const mongoose = require('mongoose');
+const test = require('./sample')
 const moment = require('moment');
 // console.log(passwordGen(30, false));
 const passwordGen = require('password-generator');
 
-mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
-  if (err){
-      console.log("Error connecting to mongodb");
-      console.log("===============================");console.log("===============================");console.log("===============================");
-      console.log(err.message);
-      console.log("===============================");
-      console.log("===============================");
-  } else if (!err){
-      console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
-  }
-});
-var passSchema = mongoose.Schema({
-  username: {type: String, required: true},
-  userId: {type: Number, required:true}
-});
+// mongoose.connect('mongodb://admin:asdfghjkl@ds157964.mlab.com:57964/passbot', function(err, res){
+//   if (err){
+//       console.log("Error connecting to mongodb");
+//       console.log("===============================");console.log("===============================");console.log("===============================");
+//       console.log(err.message);
+//       console.log("===============================");
+//       console.log("===============================");
+//   } else if (!err){
+//       console.log("CONNECTING TO MONGODB ON localhost:27017.....CONNECTED!! ");
+//   }
+// });
+// var passSchema = mongoose.Schema({
+//   username: {type: String, required: true},
+//   userId: {type: Number, required:true}
+// });
 
-const schema = mongoose.model("firstTest", passSchema);
+// const schema = mongoose.model("firstTest", passSchema);
 module.exports = function(bp) {
   // Listens for a first message (this is a Regex)
   // GET_STARTED is the first message you get on Facebook Messenger
   bp.hear(/GET_STARTED|hello|hi|test|hey|holla/i, (event, next) => {
     event.reply('#welcome'); // See the file `content.yml` to see the block
     event.reply('#quickReplyFast');
-
-    new Promise((resolve,reject) => {
-            schema.findOne({
-              username: `${event.user.first_name} ${event.user.last_name}`
-            }, (err,res) =>{
-                resolve(res)
-                reject(err)
-            })     
-        }).then((response) =>{
-            if (response) {
-                return console.log("USER EXISTS")
-            } else {
-              var mySavedPass = new schema({
-                username: `${event.user.first_name} ${event.user.last_name}`,
-                userId: `${event.user.id}`
-            });
-                mySavedPass.save();
-                console.log("SAVING.....SAVED");
-            }
-          })
+test()
+    // new Promise((resolve,reject) => {
+    //         schema.findOne({
+    //           username: `${event.user.first_name} ${event.user.last_name}`
+    //         }, (err,res) =>{
+    //             resolve(res)
+    //             reject(err)
+    //         })     
+    //     }).then((response) =>{
+    //         if (response) {
+    //             return console.log("USER EXISTS")
+    //         } else {
+    //           var mySavedPass = new schema({
+    //             username: `${event.user.first_name} ${event.user.last_name}`,
+    //             userId: `${event.user.id}`
+    //         });
+    //             mySavedPass.save();
+    //             console.log("SAVING.....SAVED");
+    //         }
+    //       })
     
   })
 
@@ -89,7 +91,6 @@ module.exports = function(bp) {
    *     DONE===>  ASK USER FOR PASSWORD PROPERTIES (REMEMBRABLE, LENGTH, ETC);
    *       SAVE TO LOG FILE, FOR USER TO BE ABLE TO RETRIEVE
    */
-
    bp.hear(/QUICKREPLY.B1|QUICKREPLYFAST.B1/, (event, next) => {
      const generatePassword = passwordGen(7, true);
      bp.messenger.sendText(generatePassword);
@@ -107,21 +108,14 @@ module.exports = function(bp) {
       bp.messenger.sendText(event.user.id, generatePassword);
   }
    });
-
-
-
 customPass(bp);
-
-
 /**
  * we need a custom password
  */
 strongPass(bp);
-
 /**
  * WE FOUND A PREVIOUS CONVO
  */
-
 bp.hear('STOP_CONVO', (event, next) => {
   const convo = bp.convo.find(event) 
   if (convo) {
