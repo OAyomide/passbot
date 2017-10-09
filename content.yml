@@ -89,5 +89,18 @@ passwordActionText:
   - typing: true
     text: You can now go ahead and copy your password 😃😃😃. Don't forget to delete after copying.
 
+
+artisanCarousel:
+  - template_type: generic
+    elements:
+        - title: Tips for choosing password
+          image_url: https://www.google.com.ng/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjq4vSHpuLWAhUDJFAKHcqxChUQjRwIBw&url=https%3A%2F%2Fhrformanagers.fspsecure.co.za%2F&psig=AOvVaw1cOF_Pp4FwHIY59sKrT7b0&ust=1507595752665115
+          subtitle: Choosing the right password
+          buttons:
+            - type: web_url
+              title: View Full Profile
+              webview_height_ratio: tall
+              url: https://passbotinit.herokuapp.com/botpress-web/tipOne
+      {{/myArr}}
 # imageSent:
 #   - url: {{{url}}}

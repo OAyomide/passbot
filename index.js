@@ -10,6 +10,7 @@ const customPass = require ('./passwords/customPassword');
 const strongPass = require('./passwords/strongPassword');
 const mongoose = require('mongoose');
 const moment = require('moment');
+const route = require('./routes/routes')
 // console.log(passwordGen(30, false));
 const passwordGen = require('password-generator');
 
@@ -105,6 +106,10 @@ module.exports = function(bp) {
       bp.messenger.sendText(event.user.id, generatePassword);
   }
    });
+/**
+ * We are using our route
+ */
+route(bp)
 customPass(bp);
 /**
  * we need a custom password
