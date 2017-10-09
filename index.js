@@ -28,7 +28,7 @@ var passSchema = mongoose.Schema({
   username: {type: String, required: true},
   userId: {type: Number, required:true}
 });
-// const schema = mongoose.model("firstTest", passSchema);
+ const schema = mongoose.model("firstTest", passSchema);
 module.exports = function(bp) {
   // Listens for a first message (this is a Regex)
   // GET_STARTED is the first message you get on Facebook Messenger
