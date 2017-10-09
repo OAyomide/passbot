@@ -101,6 +101,5 @@ artisanCarousel:
               title: View Full Profile
               webview_height_ratio: tall
               url: https://passbotinit.herokuapp.com/botpress-web/tipOne
-      {{/myArr}}
 # imageSent:
 #   - url: {{{url}}}
