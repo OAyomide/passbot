@@ -112,6 +112,7 @@ module.exports = function(bp) {
  */
 bp.hear(/QUICKREPLY.B5|QUICKREPLYFAST.B5/i, (event,next)=>{
   event.reply('#tipCarousel')
+  event.reply('#quickReply');
 })
 /**
  * We are using our route
