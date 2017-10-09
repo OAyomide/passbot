@@ -121,7 +121,7 @@ module.exports = function strong(bp) {
     //       console.log(`Directory is: ${passDir}`)
     //   }).catch((err)=>console.log(err))
 
-    //   });
+      });
 
 
 }
