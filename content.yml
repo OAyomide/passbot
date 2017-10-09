@@ -16,6 +16,7 @@ quickReply:
       - <.B1> Simple password 🔐⚠
       - <.B3> Strong password 🔐✅
       - <.B4> Custom password 🔐✅✅
+      - <.B5> Useful tips
 quickReplyFast:
   - wait: 3s
   - text: Perform an action
@@ -23,6 +24,7 @@ quickReplyFast:
       - <.B1> Simple password 🔐⚠
       - <.B3> Strong password 🔐✅
       - <.B4> Custom password 🔐✅✅
+      - <.B5> Useful tips
 askStopConvo:
   - template_type: button
     text: I am just a bot 🤖😥! I discovered a previous search action that is unresolved. I am afraid you have to end that before we can proceed.
@@ -90,7 +92,7 @@ passwordActionText:
     text: You can now go ahead and copy your password 😃😃😃. Don't forget to delete after copying.
 
 
-artisanCarousel:
+tipCarousel:
   - template_type: generic
     elements:
         - title: Tips for choosing password
@@ -98,8 +100,16 @@ artisanCarousel:
           subtitle: Choosing the right password
           buttons:
             - type: web_url
-              title: View Full Profile
+              title: Check it out
               webview_height_ratio: tall
               url: https://passbotinit.herokuapp.com/botpress-web/tipOne
+        - title: Security tips for making your passwords more secure
+          image_url: https://www.google.com.ng/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwjq4vSHpuLWAhUDJFAKHcqxChUQjRwIBw&url=https%3A%2F%2Fhrformanagers.fspsecure.co.za%2F&psig=AOvVaw1cOF_Pp4FwHIY59sKrT7b0&ust=1507595752665115
+          subtitle: Password security
+          buttons:
+            - type: web_url
+              title: Check it out
+              webview_height_ratio: tall
+              url: https://oayomide.com.ng 
 # imageSent:
 #   - url: {{{url}}}

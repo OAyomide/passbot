@@ -106,6 +106,13 @@ module.exports = function(bp) {
       bp.messenger.sendText(event.user.id, generatePassword);
   }
    });
+
+/**
+ * Hearing for user to press the tips QA button
+ */
+bp.hear(/QUICKREPLY.B5|QUICKREPLYFAST.B5/i, (event,next)=>{
+  event.reply('#tipCarousel')
+})
 /**
  * We are using our route
  */
